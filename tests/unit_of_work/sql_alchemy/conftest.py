@@ -7,7 +7,7 @@ import pytest_asyncio
 from sqlalchemy.ext.asyncio import AsyncEngine, create_async_engine, AsyncSession
 
 from svoi_framework.unit_of_work.uow import EventDispatcher
-from .unit_of_work.user_test_repository import (
+from .user_test_repository import (
     SqlAlchemyTestUnitOfWork,
     Base,
     UserTestRepository,

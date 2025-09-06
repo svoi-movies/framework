@@ -2,7 +2,7 @@ import abc
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from .uow import UnitOfWork, EventDispatcher
+from svoi_framework.unit_of_work.uow import UnitOfWork, EventDispatcher
 
 
 class SQLAlchemyUnitOfWork(UnitOfWork, abc.ABC):
