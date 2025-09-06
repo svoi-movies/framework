@@ -2,7 +2,6 @@ from typing import Protocol, cast
 
 
 class DomainEvent(Protocol):
-
     @property
     def type(self) -> str: ...
 

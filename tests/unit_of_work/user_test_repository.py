@@ -20,7 +20,6 @@ class Base(DeclarativeBase):
 
 @dataclass(frozen=True, eq=True)
 class UserTestEvent(DomainEvent):
-
     @property
     def type(self) -> str:
         return "test"
