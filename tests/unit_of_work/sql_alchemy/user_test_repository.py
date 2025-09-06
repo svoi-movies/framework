@@ -9,7 +9,10 @@ from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
 from svoi_framework.domain.aggregate import Aggregate, DomainEvent
 from svoi_framework.unit_of_work import DataMapper, EventDispatcher
-from svoi_framework.unit_of_work.sqlalchemy import SQLAlchemyRepository, SQLAlchemyUnitOfWork
+from svoi_framework.unit_of_work.sqlalchemy import (
+    SQLAlchemyRepository,
+    SQLAlchemyUnitOfWork,
+)
 
 
 class Base(DeclarativeBase):
