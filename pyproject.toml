@@ -26,7 +26,8 @@ test = [
 [tool.mypy]
 mypy_path = "src"
 
-["mypy-pytest_asyncio.*"]
+[[tool.mypy.overrides]]
+module = "pytest_asyncio.*"
 ignore_missing_imports = true
 
 [build-system]
