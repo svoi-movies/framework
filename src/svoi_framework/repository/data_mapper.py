@@ -2,7 +2,7 @@ import abc
 
 from sqlalchemy.orm import DeclarativeBase
 
-from framework.domain.aggregate import Aggregate
+from svoi_framework.domain.aggregate import Aggregate
 
 
 class DataMapper[TAggregate: Aggregate, TModel: DeclarativeBase](abc.ABC):

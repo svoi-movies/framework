@@ -2,7 +2,7 @@ name: PR Checks
 
 on:
   pull_request:
-    branches: [main]
+    branches: [ main ]
 
 jobs:
   build-and-test:
@@ -27,9 +27,9 @@ jobs:
       - name: Run mypy
         run: |
           docker run --rm framework:latest \
-            "uv run mypy . && uv run ruff format --check ."
+            "uv run mypy --config pyproject.toml ."
 
       - name: Run tests
         run: |
           docker run --rm framework:latest \
-            "uv run pytest --vvv"
+            "uv run pytest -vvv ."

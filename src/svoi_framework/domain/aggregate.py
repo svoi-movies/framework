@@ -2,7 +2,8 @@ from typing import Protocol, cast
 
 
 class DomainEvent(Protocol):
-    type: str
+    @property
+    def type(self) -> str: ...
 
 
 class Aggregate[TId]:

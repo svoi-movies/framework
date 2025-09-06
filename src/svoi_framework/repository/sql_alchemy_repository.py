@@ -3,9 +3,9 @@ import abc
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import DeclarativeBase
 
-from framework.domain.aggregate import Aggregate
-from framework.repository.data_mapper import DataMapper
-from framework.repository.repository import Repository
+from svoi_framework.domain.aggregate import Aggregate
+from svoi_framework.repository.data_mapper import DataMapper
+from svoi_framework.repository.repository import Repository
 
 
 class SQLAlchemyRepository[TAggregate: Aggregate, TOrmModel: DeclarativeBase](
