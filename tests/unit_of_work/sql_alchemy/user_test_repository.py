@@ -8,10 +8,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
 from svoi_framework.domain.aggregate import Aggregate, DomainEvent
-from svoi_framework.repository.data_mapper import DataMapper
-from svoi_framework.repository.sql_alchemy_repository import SQLAlchemyRepository
-from svoi_framework.unit_of_work.sql_alchemy_uow import SQLAlchemyUnitOfWork
-from svoi_framework.unit_of_work.uow import EventDispatcher
+from svoi_framework.unit_of_work import DataMapper, EventDispatcher
+from svoi_framework.unit_of_work.sqlalchemy import SQLAlchemyRepository, SQLAlchemyUnitOfWork
 
 
 class Base(DeclarativeBase):

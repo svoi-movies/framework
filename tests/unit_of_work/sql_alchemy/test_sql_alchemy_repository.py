@@ -2,7 +2,7 @@ from unittest import mock
 
 import pytest
 
-from ..unit_of_work.user_test_repository import (
+from .user_test_repository import (
     UserTestRepository,
     UserTestAggregate,
     UserTestEvent,
