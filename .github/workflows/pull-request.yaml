@@ -2,7 +2,7 @@ name: PR Checks
 
 on:
   pull_request:
-    branches: [main]
+    branches: [ main ]
 
 jobs:
   build-and-test:
@@ -33,11 +33,3 @@ jobs:
         run: |
           docker run --rm framework:latest \
             "uv run pytest --vvv"
-
-      - name: Publish package
-        env:
-          UV_PUBLISH_USERNAME: __token__
-          UV_PUBLISH_PASSWORD: ${{ secrets.PYPI_PUSH_TOKEN }}
-        run: |
-          docker run --rm framework:latest \
-            "uv build && uv publish"
