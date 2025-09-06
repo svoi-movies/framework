@@ -1,5 +1,6 @@
 import uuid
 from dataclasses import dataclass
+from typing import cast
 
 from sqlalchemy import String
 import sqlalchemy as sql
@@ -19,6 +20,11 @@ class Base(DeclarativeBase):
 
 @dataclass(frozen=True, eq=True)
 class UserTestEvent(DomainEvent):
+
+    @property
+    def type(self) -> str:
+        return "test"
+
     value: str
 
 
@@ -65,9 +71,9 @@ class UserTestRepository(SQLAlchemyRepository[UserTestAggregate, UserTestOrmMode
         return UserTestDataMapper()
 
     async def get_by_id(self, user_id: uuid.UUID) -> UserTestOrmModel:
-        query = sql.Select(UserTestOrmModel).where(UserTestOrmModel.user_id == user_id)
+        query = sql.select(UserTestOrmModel).where(UserTestOrmModel.user_id == user_id)
         result = await self._session.scalars(query)
-        return result.first()
+        return cast(UserTestOrmModel, result.first())
 
 
 class SqlAlchemyTestUnitOfWork(SQLAlchemyUnitOfWork):

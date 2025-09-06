@@ -21,9 +21,7 @@ class SQLAlchemyUnitOfWork(UnitOfWork, abc.ABC):
         await self.__session.rollback()
 
     async def begin(self) -> None:
-        await super().begin()
         await self.__session.begin()
 
     async def flush(self) -> None:
-        await super().flush()
         await self.__session.flush()
