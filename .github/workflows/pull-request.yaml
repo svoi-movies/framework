@@ -32,4 +32,4 @@ jobs:
       - name: Run tests
         run: |
           docker run --rm framework:latest \
-            "uv run pytest --vvv"
+            "uv run pytest -vvv ."
