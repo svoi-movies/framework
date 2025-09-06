@@ -1,7 +1,7 @@
 import abc
 
-from framework.domain.aggregate import DomainEvent
-from framework.repository.repository import Repository
+from svoi_framework.domain.aggregate import DomainEvent
+from svoi_framework.repository.repository import Repository
 
 
 class EventDispatcher(abc.ABC):

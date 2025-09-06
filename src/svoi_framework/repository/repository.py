@@ -1,6 +1,6 @@
 import abc
 
-from framework.domain.aggregate import Aggregate, DomainEvent
+from svoi_framework.domain.aggregate import Aggregate, DomainEvent
 
 
 class Repository[T: Aggregate](abc.ABC):
