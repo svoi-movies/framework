@@ -1,4 +1,3 @@
-import pytest
 
 from svoi_framework.domain.aggregate import Aggregate, DomainEvent
 
