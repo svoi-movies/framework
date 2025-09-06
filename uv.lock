@@ -172,6 +172,18 @@ wheels = [
 ]
 
 [[package]]
+name = "pytest-stub"
+version = "1.1.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "pytest" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/32/67/d22676636e337c058b15178bcf6e3f1cd71b8fd52782791c46152bd79e4c/pytest-stub-1.1.0.tar.gz", hash = "sha256:276043d91cbad863ba56b99f6b781a4a1bc19e1d2e928a5f8e76979ee02c8099", size = 5852 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/34/30/13f00e1af36577df3e355827cdc02e1a7cbb4fce31966a72a692573ae683/pytest_stub-1.1.0-py2.py3-none-any.whl", hash = "sha256:5de0e3247f8e51321c4dc6d94bbe53c8a96a51edcf722d3df3cb20d4d32b27d7", size = 5700 },
+]
+
+[[package]]
 name = "ruff"
 version = "0.12.12"
 source = { registry = "https://pypi.org/simple" }
@@ -235,6 +247,7 @@ dependencies = [
 [package.dev-dependencies]
 dev = [
     { name = "mypy" },
+    { name = "pytest-stub" },
     { name = "ruff" },
 ]
 test = [
@@ -253,6 +266,7 @@ requires-dist = [
 [package.metadata.requires-dev]
 dev = [
     { name = "mypy", specifier = ">=1.17.1" },
+    { name = "pytest-stub", specifier = ">=1.1.0" },
     { name = "ruff", specifier = ">=0.12.12" },
 ]
 test = [
