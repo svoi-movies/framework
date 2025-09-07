@@ -38,7 +38,7 @@ class TxOutboxEventPublisher(EventPublisher):
         target_table = self._routes[event.type]
 
         query = (
-            f"insert into {target_table} (id, type, payload, created_at, trace_id) "
+            f"insert into {target_table} (id, type, payload, created_at) "
             "values (:id, :type, :payload, :created_at)"
         )
         params = {
