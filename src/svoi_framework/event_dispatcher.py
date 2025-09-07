@@ -49,7 +49,7 @@ class DefaultEventDispatcher(EventDispatcher):
             assert handler is not None
             await handler.handle(event)
 
-    async def add_event_handler[TEvent: Event, THandler: EventHandler](
+    def add_event_handler[TEvent: Event, THandler: EventHandler](
         self, event_type: type[TEvent], handler: type[THandler]
     ) -> None:
         if event_type not in self.__event_handlers:
@@ -57,7 +57,7 @@ class DefaultEventDispatcher(EventDispatcher):
 
         self.__event_handlers[event_type].append(handler)
 
-    async def add_command_handler[TCommand: Command, TResult](
+    def add_command_handler[TCommand: Command, TResult](
         self, command_type: type[TCommand], handler: type[CommandHandler[TResult]]
     ) -> None:
         if command_type in self.__command_handlers:
