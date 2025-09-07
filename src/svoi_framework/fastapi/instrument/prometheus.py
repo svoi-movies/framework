@@ -8,7 +8,9 @@ class PrometheusConfig(BaseModel):
     exclude_handlers: list[str]
 
 
-def instrument(app: FastAPI, config: PrometheusConfig, registry: CollectorRegistry) -> None:
+def instrument(
+    app: FastAPI, config: PrometheusConfig, registry: CollectorRegistry
+) -> None:
     prometheus = Instrumentator(
         registry=registry,
         excluded_handlers=config.exclude_handlers,
