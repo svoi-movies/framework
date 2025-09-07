@@ -8,7 +8,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
 from svoi_framework.domain.aggregate import Aggregate, DomainEvent
-from svoi_framework.unit_of_work import DataMapper, EventDispatcher
+from svoi_framework.unit_of_work import DataMapper, EventPublisher
 from svoi_framework.unit_of_work.sqlalchemy import (
     SQLAlchemyRepository,
     SQLAlchemyUnitOfWork,
@@ -79,7 +79,7 @@ class UserTestRepository(SQLAlchemyRepository[UserTestAggregate, UserTestOrmMode
 class SqlAlchemyTestUnitOfWork(SQLAlchemyUnitOfWork):
     def __init__(
         self,
-        event_dispatcher: EventDispatcher,
+        event_dispatcher: EventPublisher,
         session: AsyncSession,
     ) -> None:
         super().__init__(event_dispatcher, session)

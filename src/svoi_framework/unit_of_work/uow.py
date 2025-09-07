@@ -4,13 +4,13 @@ from svoi_framework.domain.aggregate import DomainEvent
 from svoi_framework.unit_of_work import Repository
 
 
-class EventDispatcher(abc.ABC):
+class EventPublisher(abc.ABC):
     async def dispatch(self, event: DomainEvent) -> None: ...
 
 
 class UnitOfWork(abc.ABC):
-    def __init__(self, event_dispatcher: EventDispatcher) -> None:
-        self.__event_dispatcher = event_dispatcher
+    def __init__(self, event_dispatcher: EventPublisher) -> None:
+        self.__event_publisher = event_dispatcher
         self.__repositories: list[Repository] = []
 
     async def __aenter__(self) -> None:
@@ -45,4 +45,4 @@ class UnitOfWork(abc.ABC):
         for repository in self.__repositories:
             events = repository.collect_events()
             for event in events:
-                await self.__event_dispatcher.dispatch(event)
+                await self.__event_publisher.dispatch(event)

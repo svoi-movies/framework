@@ -6,7 +6,7 @@ import pytest
 import pytest_asyncio
 from sqlalchemy.ext.asyncio import AsyncEngine, create_async_engine, AsyncSession
 
-from svoi_framework.unit_of_work.uow import EventDispatcher
+from svoi_framework.unit_of_work.uow import EventPublisher
 from .user_test_repository import (
     SqlAlchemyTestUnitOfWork,
     Base,
@@ -40,14 +40,14 @@ async def mock_async_session(async_engine: AsyncEngine) -> AsyncSession:
 
 
 @pytest.fixture(scope="function")
-def mock_event_dispatcher() -> EventDispatcher:
-    return mock.MagicMock(spec=EventDispatcher)
+def mock_event_dispatcher() -> EventPublisher:
+    return mock.MagicMock(spec=EventPublisher)
 
 
 @pytest.fixture(scope="function")
 def unit_of_work(
     async_session: AsyncSession,
-    mock_event_dispatcher: EventDispatcher,
+    mock_event_dispatcher: EventPublisher,
 ) -> SqlAlchemyTestUnitOfWork:
     return SqlAlchemyTestUnitOfWork(mock_event_dispatcher, async_session)
 
