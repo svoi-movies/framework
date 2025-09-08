@@ -13,7 +13,7 @@ class AsyncPgProvider(Provider):
         self.db = db
 
     @provide(scope=Scope.APP)
-    async def connection_pool(self) -> asyncpg.Pool:
+    async def connection_pool(self) -> AsyncGenerator[asyncpg.Pool]:
         dsn = (
             "postgresql://{user}:{password}@{host}:{port}/{database}"
             .format(
@@ -24,7 +24,10 @@ class AsyncPgProvider(Provider):
                 database=self.db.database
             )
         )
-        return asyncpg.create_pool(dsn)
+
+        pool = await asyncpg.create_pool(dsn)
+        yield pool
+        await pool.close()
 
     @provide(scope=Scope.REQUEST)
     async def connection(self, pool: asyncpg.Pool) -> AsyncGenerator[asyncpg.Connection]:
